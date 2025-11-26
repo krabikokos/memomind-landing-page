@@ -21,7 +21,7 @@ To run this project locally, follow these simple steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://[your-github-username]/memomind-landing-page.git
+    git clone https:https://github.com/krabikokos/memomind-landing-page
     ```
 2.  **Navigate to the project directory:**
     ```bash
