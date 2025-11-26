@@ -1,0 +1,367 @@
+/* --- 1. CSS Reset и Базовые стили --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Важно для адаптивности */
+}
+
+body {
+    font-family: 'Arial', sans-serif; 
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход при смене темы */
+}
+
+/* Общий контейнер для центрирования контента */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+
+/* --- 2. Цветовые переменные (Light Theme - По умолчанию) --- */
+:root {
+    /* Твои цвета для светлой темы */
+    --primary-color: #52b69a;        /* Бирюзово-зеленый (Акцент) */
+    --background-color: #ffffff;     /* Белый (Основной фон) */
+    --text-color: #333333;           /* Темный текст */
+    --secondary-bg-color: #90e0ef;   /* Светло-голубой (Вторичный фон/Hero Section) */
+    --header-bg-color: #ffffff;
+    --border-color: #dddddd;
+}
+
+/* --- 3. Цветовые переменные (Dark Theme) --- */
+body.dark-theme {
+    /* Цвета для темной темы */
+    --background-color: #121212;     /* Очень темный фон */
+    --text-color: #f1f1f1;           /* Светлый текст */
+    --secondary-bg-color: #1e1e1e;   /* Чуть более светлый темный фон */
+    --header-bg-color: #121212;
+    --border-color: #383838;
+    --primary-color: #52b69a;        /* Сохраняем акцентный цвет */
+}
+
+/* Применяем переменные к body */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+
+/* --- 4. Стили Header и Navigation --- */
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--header-bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 1.8rem; 
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-list li a {
+    padding: 10px 15px;
+    display: block;
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+.nav-list li a:hover {
+    color: var(--primary-color); 
+}
+
+/* Стили для кнопок, которые всегда в шапке */
+.menu-toggle, .theme-toggle {
+    background: none;
+    border: none;
+    color: var(--primary-color); /* Иконки акцентного цвета */
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 10px; 
+}
+
+/* Добавляем анимацию для кнопки темы */
+.theme-toggle:hover {
+    transform: rotate(360deg); /* Вращение на 360 градусов */
+    transition: transform 0.6s ease-in-out; 
+}
+
+/* Скрываем гамбургер-меню на десктопе */
+.menu-toggle {
+    display: none; 
+}
+
+/* Сбрасываем трансформацию для кнопки гамбургера, если она вдруг унаследовала */
+.menu-toggle:hover {
+    transform: none;
+}
+
+/* --- 5. Стили Кнопок (CTA) --- */
+.btn {
+    display: inline-block;
+    padding: 12px 30px; 
+    border-radius: 50px; 
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.primary-btn {
+    background-color: var(--primary-color); 
+    color: #ffffff; /* Белый текст */
+    border: 2px solid var(--primary-color);
+    /* Тень в цвет кнопки для эффекта "подъема" */
+    box-shadow: 0 4px 15px rgba(82, 182, 154, 0.5); 
+}
+
+.primary-btn:hover {
+    background-color: #439a83; /* Чуть темнее при наведении */
+    border-color: #439a83;
+}
+
+/* --- 6. Стили Секций --- */
+.hero-section {
+    text-align: center;
+    padding: 100px 20px; 
+    /* Используем твой Светло-голубой цвет как фон */
+    background-color: var(--secondary-bg-color); 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
+}
+
+.hero-section h1 {
+    font-size: 3.5rem; 
+    margin-bottom: 20px;
+    color: var(--text-color); 
+}
+
+.hero-section p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-section {
+    padding: 80px 20px; 
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* --- 7. Стили Footer --- */
+.main-footer {
+    background-color: var(--secondary-bg-color); 
+    border-top: 1px solid var(--border-color);
+    padding: 20px 0;
+}
+
+.main-footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links a {
+    margin: 0 10px;
+    color: var(--primary-color); /* Ссылки акцентного цвета */
+    font-size: 1.5rem;
+
+    /* Эффект для анимации */
+    transition: transform 0.3s ease-in-out, color 0.3s;
+    display: inline-block; /* Важно для transform */
+}
+
+/* Анимация: иконка "подпрыгивает" при наведении */
+.social-links a:hover {
+    color: var(--text-color); /* Меняем цвет на основной, чтобы выделить */
+    transform: translateY(-5px) scale(1.1); /* Сдвиг вверх и легкое увеличение */
+}
+
+
+/* --- 9. Стили для Секции Key Features --- */
+
+.section-description {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.features-grid {
+    display: grid;
+    /* Создаем 3 колонки одинаковой ширины */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Расстояние между карточками */
+    padding-top: 20px;
+}
+
+.feature-card {
+    background-color: var(--header-bg-color); /* Фон карточки как фон шапки */
+    padding: 30px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    
+    /* Красивая тень, которая меняется в темной теме */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+/* Эффект при наведении на карточку */
+.feature-card:hover {
+    transform: translateY(-8px); /* Карточка "поднимается" */
+    border-color: var(--primary-color); /* Бордюр становится акцентного цвета */
+    box-shadow: 0 10px 20px rgba(82, 182, 154, 0.3); /* Яркая тень */
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: var(--primary-color); /* Иконка всегда акцентного цвета */
+    margin-bottom: 15px;
+    transition: color 0.3s;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+/* --- 10. Стили для Секции Контакты и Формы --- */
+
+.contact-form {
+    max-width: 600px;
+    margin: 40px auto 0; /* Центрируем форму */
+    padding: 30px;
+    background-color: var(--secondary-bg-color); /* Фон формы - твой Светло-голубой */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .contact-form {
+    background-color: var(--secondary-bg-color); /* Фон формы в темной теме */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color); /* Акцентный цвет при фокусе */
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical; /* Разрешаем менять размер только по вертикали */
+}
+
+/* Стили для кнопки "Send Message" уже заданы в .primary-btn */
+
+.form-message {
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* --- 8. Адаптивность (Media Queries) --- */
+
+@media (max-width: 768px) {
+    
+    .main-header .container {
+        flex-wrap: wrap; 
+        justify-content: space-between; 
+    }
+    
+    /* На мобильных устройствах: показываем гамбургер-меню */
+    .menu-toggle {
+        display: block; 
+    }
+    
+    /* Размещаем кнопки темы и гамбургер рядом, чтобы они уместились */
+    .theme-toggle {
+        order: 3; 
+    }
+    
+    /* Скрываем обычное меню и делаем его вертикальным */
+    .main-nav {
+        display: none; 
+        width: 100%; 
+        order: 4; 
+        padding: 10px 0;
+        border-top: 1px solid var(--border-color);
+        background-color: var(--header-bg-color);
+    }
+
+    .main-nav.active {
+        /* Класс, который добавляет JavaScript при клике */
+        display: block;
+    }
+
+    .nav-list {
+        flex-direction: column; 
+    }
+
+    .nav-list li a {
+        padding: 10px 20px;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .hero-section {
+        padding: 60px 20px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.2rem; /* Уменьшаем заголовок */
+    }
+    
+    .main-footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .main-footer p {
+        margin-bottom: 10px;
+    }
+
+    /* ... (внутри медиа-запроса) ... */
+    .features-grid {
+        grid-template-columns: 1fr; /* На мобильных - одна колонка */
+    }
+}
